@@ -159,7 +159,7 @@ Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
 ````
 $category = \App\Models\Category::find(1);
 
-AoLogs()->put($category, [
+AoLogs()->post($category, [
     'title' => 'Cadastro realizado.',
     'description' => 'O usuário "Alex Oliveira" realizou o cadastro da categoria "Computadores".'
 ]);
