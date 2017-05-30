@@ -150,6 +150,11 @@ Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
 });
 ````
 
+### Checking routes
+````
+$ php artisan route:list
+````
+
 
 
 
