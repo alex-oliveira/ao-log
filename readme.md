@@ -37,6 +37,7 @@ return [
 ### 4) Publish migrations
 ````
 $ php artisan vendor:publish
+$ composer dump
 ````
 
 
@@ -111,7 +112,7 @@ class User extends Model
 ````
 the same that
 ````
-return $this->belongsToMany(Log::class, 'ao_logs_x_user');
+return $this->belongsToMany(Log::class, 'ao_logs_x_users');
 ````
 
 
