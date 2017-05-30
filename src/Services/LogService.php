@@ -64,8 +64,6 @@ class LogService extends ScrudService
     // CONSTRUCTOR
     //------------------------------------------------------------------------------------------------------------------
 
-    private $temp = false;
-
     public function __construct()
     {
         parent::__construct();
@@ -80,11 +78,12 @@ class LogService extends ScrudService
             ->with([
                 'user' => [
                     'columns' => ['id', 'name'],
-                    'otherColumns' => ['email', 'created_at', 'updated_at', 'deleted_at']
+                    'otherColumns' => ['created_at', 'updated_at']
                 ]
             ])
             ->rules([
                 'id' => '=',
+                //'user_id' => '=',
                 'operation' => '=',
                 [
                     'title' => '%like%|get:search',

@@ -3,9 +3,9 @@
 namespace AoLogs;
 
 use AoLogs\Utils\Facades\AoLogsFacade;
-use Illuminate\Support\ServiceProvider as BaseServiceProvider;
+use Illuminate\Support\ServiceProvider as LaraServiceProvider;
 
-class ServiceProvider extends BaseServiceProvider
+class ServiceProvider extends LaraServiceProvider
 {
 
     public function boot()

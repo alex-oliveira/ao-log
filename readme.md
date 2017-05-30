@@ -17,8 +17,6 @@ $ composer require alex-oliveira/ao-logs
 
 ### 3) Create "config/ao.php" file
 ````
-<?php
-
 return [
     .
     .
@@ -60,14 +58,14 @@ the same that
 ````
 public function up()
 {    
-    Schema::create('ao_logs_logs_x_users', function (Blueprint $table) {
+    Schema::create('ao_logs_x_users', function (Blueprint $table) {
         $table->integer('user_id')->unsigned();
-        $table->foreign('user_id', 'fk_users_x_aologs')->references('id')->on('users');
+        $table->foreign('user_id', 'fk_users_x_ao_logs')->references('id')->on('users');
         
         $table->bigInteger('log_id')->unsigned();
-        $table->foreign('log_id', 'fk_aologs_x_users')->references('id')->on('ao_logs_logs');
+        $table->foreign('log_id', 'fk_ao_logs_x_users')->references('id')->on('ao_logs_logs');
         
-        $table->primary(['user_id', 'log_id'], 'pk_aologs_x_users');
+        $table->primary(['user_id', 'log_id'], 'pk_ao_logs_x_users');
     });
 }
 ````
@@ -83,7 +81,7 @@ the same that
 ````
 public function down()
 {    
-    Schema::dropIfExists('ao_logs_logs_x_users');
+    Schema::dropIfExists('ao_logs_x_users');
 }
 ````
 
@@ -113,7 +111,7 @@ class User extends Model
 ````
 the same that
 ````
-return $this->belongsToMany(Log::class, 'ao_logs_logs_x_user');
+return $this->belongsToMany(Log::class, 'ao_logs_x_user');
 ````
 
 

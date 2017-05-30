@@ -16,8 +16,8 @@ class Router extends RouterGerator
     ];
 
     protected $routes = [
-        ['method' => 'get', 'url' => '/', 'configs' => ['as' => 'index', 'uses' => '@index']],
-        ['method' => 'get', 'url' => '/{id}', 'configs' => ['as' => 'show', 'uses' => '@show']],
+        ['method' => 'get', 'url' => '/',     'configs' => ['as' => 'index', 'uses' => '@index']],
+        ['method' => 'get', 'url' => '/{id}', 'configs' => ['as' => 'show',  'uses' => '@show']],
     ];
 
     public function foreign($foreign)
