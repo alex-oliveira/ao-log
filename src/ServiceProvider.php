@@ -12,7 +12,7 @@ class ServiceProvider extends LaraServiceProvider
     {
         $this->publishes([
             __DIR__ . '/Utils/Migrations' => database_path('migrations'),
-        ]);
+        ], 'ao-logs');
     }
 
     public function register()

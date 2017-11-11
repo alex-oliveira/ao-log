@@ -21,7 +21,7 @@ class LogService extends ScrudService
 
     public function setDynamicClass($dynamicClass)
     {
-        $parts = explode('.', app()->make($dynamicClass)->logs()->getQualifiedForeignKeyName());
+        $parts = explode('.', app()->make($dynamicClass)->logs()->getQualifiedForeignPivotKeyName());
 
         $this->dynamicClass = $dynamicClass;
         $this->dynamicTable = $parts[0];

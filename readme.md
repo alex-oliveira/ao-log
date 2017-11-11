@@ -94,6 +94,20 @@ public function down()
 ````
 namespace App\Models;
 
+use AoLogs\Traits\AoLogsTrait;
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+
+    use AoLogsTrait;
+    
+}
+````
+the same that
+````
+namespace App\Models;
+
 use AoLogs\Models\Log;
 use Illuminate\Database\Eloquent\Model;
 
