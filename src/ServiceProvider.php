@@ -2,7 +2,7 @@
 
 namespace AoLogs;
 
-use AoLogs\Utils\Facades\AoLogsFacade;
+use AoLogs\Facades\AoLogsFacade;
 use Illuminate\Support\ServiceProvider as LaraServiceProvider;
 
 class ServiceProvider extends LaraServiceProvider
@@ -11,17 +11,17 @@ class ServiceProvider extends LaraServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/Utils/Migrations' => database_path('migrations'),
+            __DIR__ . '/../database/migrations' => database_path('migrations'),
         ], 'ao-logs');
     }
 
     public function register()
     {
         $this->app->singleton('AoLogs', function ($app) {
-            return new \AoLogs\Utils\Tools();
+            return new \AoLogs\Tools();
         });
 
-        require_once(__DIR__ . '/Utils/Helpers.php');
+        require_once(__DIR__ . '/helpers.php');
     }
 
 }

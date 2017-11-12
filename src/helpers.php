@@ -3,7 +3,7 @@
 if (!function_exists('AoLogs')) {
 
     /**
-     * @return \AoLogs\Utils\Tools
+     * @return \AoLogs\Tools
      */
     function AoLogs()
     {

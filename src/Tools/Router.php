@@ -1,14 +1,14 @@
 <?php
 
-namespace AoLogs\Utils\Tools;
+namespace AoLogs\Tools;
 
-use AoScrud\Utils\Tools\RouterGerator;
-use AoScrud\Utils\Traits\BuildTrait;
+use AoScrud\Tools\RouterGerator;
+use AoScrud\Traits\AoBuildTrait;
 
 class Router extends RouterGerator
 {
 
-    use BuildTrait;
+    use AoBuildTrait;
 
     protected $configs = [
         'prefix' => 'logs',

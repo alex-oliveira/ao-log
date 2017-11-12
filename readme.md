@@ -119,14 +119,10 @@ class User extends Model
      */
     public function logs()
     {
-        return $this->belongsToMany(Log::class, AoLogs()->schema()->table($this->getTable()));
+        return $this->belongsToMany(Log::class, 'ao_logs_x_users');
     }
     
 }
-````
-the same that
-````
-return $this->belongsToMany(Log::class, 'ao_logs_x_users');
 ````
 
 

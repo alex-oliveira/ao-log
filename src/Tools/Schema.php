@@ -1,14 +1,14 @@
 <?php
 
-namespace AoLogs\Utils\Tools;
+namespace AoLogs\Tools;
 
-use AoScrud\Utils\Traits\BuildTrait;
+use AoScrud\Traits\AoBuildTrait;
 use Illuminate\Support\Facades\Schema as LaraSchema;
 use Illuminate\Database\Schema\Blueprint;
 
 class Schema
 {
-    use BuildTrait;
+    use AoBuildTrait;
 
     protected $prefix = 'ao_logs_x_';
 

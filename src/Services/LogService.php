@@ -3,10 +3,10 @@
 namespace AoLogs\Services;
 
 use AoLogs\Models\Log;
-use AoScrud\Core\ScrudService;
+use AoScrud\Services\AoScrudService;
 use Illuminate\Support\Facades\Auth;
 
-class LogService extends ScrudService
+class LogService extends AoScrudService
 {
 
     //------------------------------------------------------------------------------------------------------------------

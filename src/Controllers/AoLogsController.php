@@ -3,9 +3,9 @@
 namespace AoLogs\Controllers;
 
 use AoLogs\Services\LogService;
-use AoScrud\Core\ScrudController;
+use AoScrud\Controllers\AoScrudController;
 
-class AoLogsController extends ScrudController
+class AoLogsController extends AoScrudController
 {
 
     //------------------------------------------------------------------------------------------------------------------

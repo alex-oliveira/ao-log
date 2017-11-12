@@ -1,10 +1,10 @@
 <?php
 
-namespace AoLogs\Utils;
+namespace AoLogs;
 
 use AoLogs\Services\LogService;
-use AoLogs\Utils\Tools\Router;
-use AoLogs\Utils\Tools\Schema;
+use AoLogs\Tools\Router;
+use AoLogs\Tools\Schema;
 
 class Tools
 {
