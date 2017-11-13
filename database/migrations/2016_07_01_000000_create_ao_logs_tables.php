@@ -14,7 +14,8 @@ class CreateAoLogsTables extends Migration
             $table->foreign('user_id')->references('id')->on(config('ao.tables.users'));
             $table->string('operation');
             $table->string('title');
-            $table->text('description');
+            $table->text('description')->nullable();
+            $table->text('data')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

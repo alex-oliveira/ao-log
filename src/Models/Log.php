@@ -16,7 +16,7 @@ class Log extends Model
 
     protected $table = 'ao_logs_logs';
 
-    protected $fillable = ['user_id', 'operation', 'title', 'description'];
+    protected $fillable = ['user_id', 'operation', 'title', 'description', 'data'];
 
     //------------------------------------------------------------------------------------------------------------------
     // DYNAMIC

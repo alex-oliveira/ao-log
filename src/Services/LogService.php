@@ -72,18 +72,17 @@ class LogService extends AoScrudService
 
         $this->search
             ->model(Log::class)
-            ->columns(['id', 'operation', 'title'])
-            ->otherColumns(['user_id', 'description', 'created_at', 'updated_at'])
+            ->columns(['id', 'title'])
+            ->otherColumns(['operation', 'user_id', 'description', 'created_at', 'updated_at'])
             ->setAllOrders()
             ->with([
                 'user' => [
-                    'columns' => ['id', 'name'],
-                    'otherColumns' => ['created_at', 'updated_at']
+                    'columns' => ['id', 'name']
                 ]
             ])
             ->rules([
                 'id' => '=',
-                //'user_id' => '=',
+                'user_id' => '=',
                 'operation' => '=',
                 [
                     'title' => '%like%|get:search',
@@ -91,6 +90,10 @@ class LogService extends AoScrudService
                 ]
             ])
             ->onPrepare(function ($config) {
+                if (!$config->data()->get('order')) {
+                    $config->data()->put('order', 'created_at');
+                    $config->data()->put('sort', 'desc');
+                }
                 $this->applyDynamicFilter($config);
             });
 
@@ -101,7 +104,7 @@ class LogService extends AoScrudService
             ->model(Log::class)
             ->columns($this->search->columns()->all())
             ->with($this->search->with()->all())
-            ->otherColumns($this->search->otherColumns()->all())
+            ->otherColumns($this->search->otherColumns()->merge(['data'])->all())
             ->onPrepare(function ($config) {
                 $this->applyDynamicFilter($config);
             });
@@ -110,13 +113,13 @@ class LogService extends AoScrudService
 
         $this->create
             ->model(Log::class)
-            ->columns(['user_id', 'operation', 'title', 'description'])
+            ->columns(['user_id', 'operation', 'title', 'description', 'data'])
             ->rules([
                 'operation' => 'required|in:GET,POST,PUT,DELETE',
                 'title' => 'required',
-                'description' => 'required',
                 'user_id' => 'sometimes|nullable|integer|exists:' . config('ao.tables.users') . ',id'
             ]);
+
     }
 
 }
