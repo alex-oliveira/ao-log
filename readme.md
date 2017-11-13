@@ -36,7 +36,9 @@ return [
 
 ### 4) Publish migrations
 ````
-$ php artisan vendor:publish
+$ php artisan vendor:publish --tag=ao-logs
+````
+````
 $ composer dump
 ````
 
@@ -99,9 +101,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-
-    use AoLogsTrait;
-    
+    use AoLogsTrait;   
 }
 ````
 the same that
@@ -113,7 +113,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-
     /**
      * @return Log[]|\Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -121,7 +120,6 @@ class User extends Model
     {
         return $this->belongsToMany(Log::class, 'ao_logs_x_users');
     }
-    
 }
 ````
 
@@ -138,9 +136,7 @@ use App\Models\User;
 
 class LogsController extends AoLogsController
 {
-
     protected $dynamicClass = User::class;
-    
 }
 ````
 
@@ -151,7 +147,7 @@ class LogsController extends AoLogsController
 ## Routes
 ````
 Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
-
+    
     AoLogs()->router()->controller('Users\LogsController')->foreign('user_id')->make();
     .
     .
@@ -172,7 +168,9 @@ $ php artisan route:list
 ## Registering log
 ````
 $category = \App\Models\Category::find(1);
-
+.
+.
+.
 AoLogs()->post($category, [
     'title' => 'Cadastro realizado.',
     'description' => 'O usuário "Alex Oliveira" realizou o cadastro da categoria "Computadores".'
