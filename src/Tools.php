@@ -41,36 +41,40 @@ class Tools
     // REGISTRY
     //------------------------------------------------------------------------------------------------------------------
 
-    public function regitry($method, $obj, $data, $user_id = null)
+    public function regitry($method, $obj = null, $data, $user_id = null)
     {
         $data['user_id'] = $user_id ? $user_id : Auth()->id();
         $data['operation'] = $method;
 
         $service = new LogService();
-        $service->setDynamicClass(get_class($obj));
+
+        if ($obj)
+            $service->setDynamicClass(get_class($obj));
 
         $log = $service->create($data);
-        $obj->logs()->save($log);
+
+        if ($obj)
+            $obj->logs()->save($log);
 
         return $log;
     }
 
-    public function get($obj, $data, $user_id = null)
+    public function get($obj = null, $data, $user_id = null)
     {
         return $this->regitry('GET', $obj, $data, $user_id);
     }
 
-    public function post($obj, $data, $user_id = null)
+    public function post($obj = null, $data, $user_id = null)
     {
         return $this->regitry('POST', $obj, $data, $user_id);
     }
 
-    public function put($obj, $data, $user_id = null)
+    public function put($obj = null, $data, $user_id = null)
     {
         return $this->regitry('PUT', $obj, $data, $user_id);
     }
 
-    public function delete($obj, $data, $user_id = null)
+    public function delete($obj = null, $data, $user_id = null)
     {
         return $this->regitry('DELETE', $obj, $data, $user_id);
     }
