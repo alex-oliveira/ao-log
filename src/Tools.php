@@ -43,7 +43,7 @@ class Tools
 
     public function regitry($method, $obj = null, $data, $user_id = null)
     {
-        $data['user_id'] = $user_id ? $user_id : Auth()->id();
+        $data['user_id'] = $user_id ? $user_id : auth()->id();
         $data['operation'] = $method;
 
         $service = new LogService();
